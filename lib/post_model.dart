@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 Future<List<Post>> fetchPost(int order) async {
-  String url = 'https://api.readhub.cn/topic?pageSize=10';
+  String url = 'https://api.readhub.cn/topic?pageSize=20';
   if (order > 0) {
     url = url + "&lastCursor=$order";
   }
@@ -21,16 +21,18 @@ Future<List<Post>> fetchPost(int order) async {
 
 class Post {
   final String id;
+  final String title;
   final String summary;
   final int order;
 
-  Post({this.id, this.summary, this.order});
+  Post({this.id, this.title, this.summary, this.order});
 
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
       id: json['id'],
+      title: json['title'],
       summary: json['summary'],
       order: json['order'],
-      );
+    );
   }
 }

@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import "package:pull_to_refresh/pull_to_refresh.dart";
 import 'post_model.dart';
+import 'newsstand_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,14 +12,29 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'simple_reader',
-      home: Scaffold(
+      title: 'Navigation Basics',
+      home: PostScreen(),
+    );
+  }
+}
+
+class PostScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: SampleAppPage(),
         appBar: AppBar(
           title: Text('simple_reader'),
-        ),
-        body: SampleAppPage(),
-      ),
-    );
+          actions: <Widget>[
+            IconButton(
+              icon: new Icon(Icons.list),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => NewsstandScreen()));
+              },
+            ),
+          ],
+        ));
   }
 }
 
@@ -73,10 +89,10 @@ class _SampleAppPageState extends State<SampleAppPage> {
       },
       child: new ListView.builder(
           itemCount: posts.length,
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(6.0),
           itemBuilder: (context, i) {
             // print("${snapshot.data.length}-${i}");
-            return Text("##$i##${posts[i].summary}");
+            return ListTile(title: Text("${posts[i].title}"));
           }),
     ));
   }

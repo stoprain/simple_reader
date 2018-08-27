@@ -5,6 +5,7 @@ import "package:pull_to_refresh/pull_to_refresh.dart";
 
 import 'post_model.dart';
 import 'newsstand_screen.dart';
+import 'detail_screen.dart';
 
 class PostScreen extends StatelessWidget {
   @override
@@ -58,32 +59,42 @@ class _SampleAppPageState extends State<SampleAppPage> {
   Widget build(BuildContext context) {
     _refreshController = new RefreshController();
     return Center(
-        child: SmartRefresher(
-      controller: _refreshController,
-      enablePullDown: true,
-      enablePullUp: true,
-      onRefresh: (up) {
-        new Future.delayed(const Duration(milliseconds: 1000)).then((val) {
-          if (up) {
-            _reloadList(0, up);
-          } else {
-            if (posts.length > 0) {
-              _reloadList(posts.last.order, up);
-            } else {
+      child: SmartRefresher(
+        controller: _refreshController,
+        enablePullDown: true,
+        enablePullUp: true,
+        onRefresh: (up) {
+          new Future.delayed(const Duration(milliseconds: 1000)).then((val) {
+            if (up) {
               _reloadList(0, up);
+            } else {
+              if (posts.length > 0) {
+                _reloadList(posts.last.order, up);
+              } else {
+                _reloadList(0, up);
+              }
             }
-          }
-        });
-      },
-      child: new ListView.builder(
-          itemCount: posts.length,
-          padding: const EdgeInsets.all(6.0),
-          itemBuilder: (context, i) {
-            return ListTile(
-              title: Text("${posts[i].title.replaceAll('\n', '')}"),
-              subtitle: Text("${posts[i].summary.replaceAll('\n', '')}"),
-            );
-          }),
-    ));
+          });
+        },
+        child: new ListView.builder(
+            itemCount: posts.length,
+            padding: const EdgeInsets.all(6.0),
+            itemBuilder: (context, i) {
+              return new GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DetailScreen(
+                            url: 'https://readhub.cn/topic/${posts[i].id}')),
+                  );
+                },
+                child: ListTile(
+                  title: Text("${posts[i].title.replaceAll('\n', '')}"),
+                ),
+              );
+            }),
+      ),
+    );
   }
 }

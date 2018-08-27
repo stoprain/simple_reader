@@ -39,7 +39,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
 
   List<Post> posts = new List<Post>();
   void _reloadList(int order, bool up) async {
-    final temp = await fetchPost(order);
+    final temp = await fetchV2ex(order);
     setState(() {
       if (order == 0) {
         posts = temp;
@@ -85,8 +85,8 @@ class _SampleAppPageState extends State<SampleAppPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => DetailScreen(
-                            url: 'https://readhub.cn/topic/${posts[i].id}')),
+                      builder: (context) => DetailScreen(url: posts[i].link),
+                    ),
                   );
                 },
                 child: ListTile(

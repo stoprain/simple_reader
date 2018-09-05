@@ -12,6 +12,7 @@ dependencies:
   pull_to_refresh: ^1.1.5
   flutter_webview_plugin: ^0.2.1
   webfeed: ^0.2.1
+  sqflite: any
 
 dev_dependencies:
   flutter_test:

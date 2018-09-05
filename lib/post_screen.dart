@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import "package:pull_to_refresh/pull_to_refresh.dart";
 
 import 'post_model.dart';
-import 'newsstand_screen.dart';
+import 'feed_screen.dart';
 import 'detail_screen.dart';
 
 class PostScreen extends StatelessWidget {
@@ -16,10 +16,10 @@ class PostScreen extends StatelessWidget {
           title: Text('simple_reader'),
           actions: <Widget>[
             IconButton(
-              icon: new Icon(Icons.list),
+              icon: new Icon(Icons.add),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => NewsstandScreen()));
+                    MaterialPageRoute(builder: (context) => FeedScreen()));
               },
             ),
           ],

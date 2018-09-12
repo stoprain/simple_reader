@@ -11,7 +11,7 @@ class DatabaseHelper {
   final String tableEntry = "entry";
   final String columnId = "id";
   final String columnTitle = "title";
-  final String columnUrl = "url";
+  final String columnLink = "link";
 
   static final DatabaseHelper _instance = new DatabaseHelper.internal();
   factory DatabaseHelper() => _instance;
@@ -37,14 +37,14 @@ class DatabaseHelper {
   void _onCreate(Database db, int newVersion) async {
     await db.execute('''
           create table $tableFeed (
-        $columnUrl text primary key,
+        $columnLink text primary key,
         $columnTitle text not null)
     ''');
     await db.execute('''
           create table $tableEntry (
         $columnId text primary key,
         $columnTitle text not null,
-        $columnUrl text not null)
+        $columnLink text not null)
     ''');
   }
 
@@ -62,7 +62,7 @@ class DatabaseHelper {
     var dbClient = await db;
     // await dbClient.transaction((txn) async {
     await dbClient.rawInsert('''
-      insert or replace into $tableFeed($columnTitle, $columnUrl)
+      insert or replace into $tableFeed($columnTitle, $columnLink)
       values("${feed.title}", "${feed.link}")
       ''');
     // });
@@ -72,7 +72,7 @@ class DatabaseHelper {
     var dbClient = await db;
     // await dbClient.transaction((txn) async {
     await dbClient.rawInsert('''
-      insert or replace into $tableEntry($columnId, $columnTitle, $columnUrl)
+      insert or replace into $tableEntry($columnId, $columnTitle, $columnLink)
       values(${entry.id}, ${entry.title}, ${entry.link})
       ''');
     // });

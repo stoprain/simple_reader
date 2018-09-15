@@ -6,6 +6,8 @@ import "package:pull_to_refresh/pull_to_refresh.dart";
 import 'post_model.dart';
 import 'feed_screen.dart';
 import 'detail_screen.dart';
+import 'database.dart';
+import 'entry_model.dart';
 
 class PostScreen extends StatelessWidget {
   final String title;
@@ -14,81 +16,60 @@ class PostScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SampleAppPage(),
+        body: EntryList(),
         appBar: AppBar(
           title: Text(title),
         ));
   }
 }
 
-class SampleAppPage extends StatefulWidget {
-  SampleAppPage({Key key}) : super(key: key);
+class EntryList extends StatefulWidget {
+  EntryList({Key key}) : super(key: key);
 
   @override
-  _SampleAppPageState createState() => _SampleAppPageState();
+  EntryListState createState() => EntryListState();
 }
 
-class _SampleAppPageState extends State<SampleAppPage> {
-  // RefreshController _refreshController;
+class EntryListState extends State<EntryList> {
+  var db = new DatabaseHelper();
+  Future<List<Entry>> response;
 
-  // List<Post> posts = new List<Post>();
-  // void _reloadList(int order, bool up) async {
-  //   final temp = await fetchV2ex(order);
-  //   setState(() {
-  //     if (order == 0) {
-  //       posts = temp;
-  //     } else {
-  //       posts = new List.from(posts)..addAll(temp);
-  //     }
-  //     print("_reloadList setState $order ${posts.length}");
-  //   });
-  //   if (up) {
-  //     _refreshController
-  //         .scrollTo(_refreshController.scrollController.offset + 50);
-  //   }
-  //   _refreshController.sendBack(up, RefreshStatus.idle);
-  // }
+  @override
+  void initState() {
+    super.initState();
+    response = db.getAllEntries();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // _refreshController = new RefreshController();
-    // return Center(
-    //   child: SmartRefresher(
-    //     controller: _refreshController,
-    //     enablePullDown: true,
-    //     enablePullUp: true,
-    //     onRefresh: (up) {
-    //       new Future.delayed(const Duration(milliseconds: 1000)).then((val) {
-    //         if (up) {
-    //           _reloadList(0, up);
-    //         } else {
-    //           if (posts.length > 0) {
-    //             _reloadList(posts.last.order, up);
-    //           } else {
-    //             _reloadList(0, up);
-    //           }
-    //         }
-    //       });
-    //     },
-    //     child: new ListView.builder(
-    //         itemCount: posts.length,
-    //         padding: const EdgeInsets.all(6.0),
-    //         itemBuilder: (context, i) {
-    //           return new GestureDetector(
-    //             onTap: () {
-    //               Navigator.push(
-    //                 context,
-    //                 MaterialPageRoute(
-    //                   builder: (context) => DetailScreen(url: posts[i].link),
-    //                 ),
-    //               );
-    //             },
-    //             child: ListTile(
-    //               title: Text("${posts[i].title.replaceAll('\n', '')}"),
-    //             ),
-    //           );
-    //         }),
-    //   ),
-    // );
+    return FutureBuilder<List<Entry>>(
+      future: response,
+      builder: (BuildContext context, AsyncSnapshot<List<Entry>> snapshot) {
+        if (snapshot.hasData) {
+          return ListView.builder(
+            itemCount: snapshot.data.length,
+            itemBuilder: (context, i) {
+              return new GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          DetailScreen(url: snapshot.data[i].link),
+                    ),
+                  );
+                },
+                child: ListTile(
+                  title: Text('${snapshot.data[i].title}'),
+                  subtitle: Text('${snapshot.data[i].link}'),
+                ),
+              );
+            },
+          );
+        } else {
+          return Text('empty');
+        }
+      },
+    );
   }
 }

@@ -68,12 +68,22 @@ class DatabaseHelper {
     // });
   }
 
+  Future<List<Entry>> getAllEntries() async {
+    var dbClient = await db;
+    var result = await dbClient.query(tableEntry);
+    var entries = List<Entry>();
+    for (Map<String, dynamic> item in result) {
+      entries.add(new Entry.fromMap(item));
+    }
+    return entries;
+  }
+
   void updateEntry(Entry entry) async {
     var dbClient = await db;
     // await dbClient.transaction((txn) async {
     await dbClient.rawInsert('''
       insert or replace into $tableEntry($columnId, $columnTitle, $columnLink)
-      values(${entry.id}, ${entry.title}, ${entry.link})
+      VALUES("${entry.id}", "${entry.title}", "${entry.link}")
       ''');
     // });
   }

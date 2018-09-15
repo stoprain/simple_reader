@@ -4,15 +4,15 @@ import 'package:simple_reader/entry_model.dart';
 import 'package:simple_reader/database.dart';
 
 void main() {
-  test('test fetchPost 0', () async {
-    var posts = await fetchReadhub(0);
-    expect(posts.length, 20);
-  });
+  // test('test fetchPost 0', () async {
+  //   var posts = await fetchReadhub(0);
+  //   expect(posts.length, 20);
+  // });
 
-  test('test testv2ex', () async {
-    await fetchV2ex(0);
-    expect(true, true);
-  });
+  // test('test testv2ex', () async {
+  //   await fetchV2ex(0);
+  //   expect(true, true);
+  // });
 
   test('test fetch', () async {
     var entries = await fetch('https://www.v2ex.com/feed/tab/tech.xml');

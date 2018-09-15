@@ -5,6 +5,7 @@ import 'feed_model.dart';
 import 'feed_screen.dart';
 import 'post_screen.dart';
 import 'package:progress_hud/progress_hud.dart';
+import 'entry_model.dart';
 
 class FeedListScreen extends StatelessWidget {
   final GlobalKey<FeedListState> feedListStateKey = GlobalKey<FeedListState>();
@@ -19,7 +20,15 @@ class FeedListScreen extends StatelessWidget {
             icon: new Icon(Icons.sync),
             onPressed: () async {
               feedListStateKey.currentState.dismissProgressHUD();
-              await new Future.delayed(const Duration(seconds: 3));
+              final db = new DatabaseHelper();
+              List<Feed> feeds = await db.getAllFeeds();
+              for (var feed in feeds) {
+                List<Entry> entries = await fetch(feed.link);
+                for (var entry in entries) {
+                  print('update entry ${entry.id}');
+                  db.updateEntry(entry);
+                }
+              }
               feedListStateKey.currentState.dismissProgressHUD();
             },
           ),

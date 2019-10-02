@@ -19,7 +19,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.12.0+2
+  http:
+  sqflite:
+  path:
+  path_provider:
+  intl:
+  shared_preferences:
+  flutter_webview_plugin:
+  pull_to_refresh:
+  scroll_to_index:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

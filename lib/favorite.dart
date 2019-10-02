@@ -32,12 +32,15 @@ class _FavoritePageState extends State<FavoritePage> {
 
   Widget getRow(int i) {
     return ListTile(
-        leading:
-            Image.network(widgets[i]["status"]["user"]["profile_image_url"]),
+        leading: (widgets[i]["status"]["user"] != null)
+            ? Image.network(widgets[i]["status"]["user"]["profile_image_url"])
+            : null,
         title: new Column(
           children: <Widget>[Text(widgets[i]["status"]["text"])],
         ),
-        subtitle: Text("${widgets[i]["status"]["user"]["name"]}"));
+        subtitle: (widgets[i]["status"]["user"] != null)
+            ? Text("${widgets[i]["status"]["user"]["name"]}")
+            : null);
   }
 
   getBody() {

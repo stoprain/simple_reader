@@ -4,6 +4,7 @@ import 'package:simple_reader/comment.dart';
 import 'package:simple_reader/model.dart';
 import 'dart:convert';
 import 'package:intl/intl.dart';
+import 'package:simple_reader/rich_text_view.dart';
 import 'package:simple_reader/scrollable_positioned_list/src/item_positions_listener.dart';
 
 import 'dart:async';
@@ -20,23 +21,7 @@ class _WeiboPageState extends State<WeiboPage> {
   List widgets = [];
   final dbHelper = DatabaseHelper.instance;
   final df = new DateFormat("EEE MMM dd HH:mm:ss yyyy");
-  // RefreshController _refreshController =
-  //     RefreshController(initialRefresh: false);
   Map<int, GlobalKey> _keys = {};
-
-  void _onRefresh() async {
-    print('_onRefresh');
-    await Future.delayed(Duration(milliseconds: 1000));
-    if (mounted) {
-      String dataURL =
-          "https://api.weibo.com/2/statuses/home_timeline.json?count=100&access_token=" +
-              DatabaseHelper.accessToken;
-      http.Response response = await http.get(dataURL);
-      List statuses = json.decode(response.body)["statuses"];
-      reloadStatuses(statuses);
-    }
-    // _refreshController.refreshCompleted();
-  }
 
   @override
   void initState() {
@@ -58,52 +43,54 @@ class _WeiboPageState extends State<WeiboPage> {
       );
 
   Widget getRow(int i) {
-    // print("getRow $i ${widgets[i]["idstr"]}");
-    // _afterLayout(_) {
-    //   final RenderBox renderBoxRed = _keys[i].currentContext.findRenderObject();
-    //   final sizeRed = renderBoxRed.size;
-    //   print("SIZE of Red: $sizeRed");
-    //   if (increase != 0 && i <= increase) {
-    //     currentHeight += sizeRed.height;
-    //   }
-    // }
-
-    // WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
     _keys[i] = new GlobalKey();
-    return ListTile(
-      key: _keys[i],
-      title: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Image.network(
-                widgets[i]["user"]["profile_image_url"],
-                width: 36,
-                height: 36,
-              ),
-              Column(
-                children: <Widget>[
-                  Text(
-                    widgets[i]["user"]["name"],
-                  ),
-                  Text(
-                    widgets[i]["created_at"],
-                  ),
-                ],
-              )
-            ],
-          ),
-          StatusCell(widgets[i])
-        ],
+    return Container(
+      child: ListTile(
+        key: _keys[i],
+        title: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Image.network(
+                  widgets[i]["user"]["profile_image_url"],
+                  width: 36,
+                  height: 36,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: Text(
+                        widgets[i]["user"]["name"],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      child: Text(
+                        widgets[i]["created_at"],
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            StatusCell(widgets[i])
+          ],
+        ),
+        subtitle: (widgets[i]["retweeted_status"] != null)
+            ? RetweetedStatusCell(widgets[i])
+            : null,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CommentPage(widgets[i]["id"])), //
+          );
+        },
       ),
-      subtitle: null,
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => CommentPage(widgets[i]["id"])), //
-        );
-      },
+      decoration:
+          new BoxDecoration(border: new Border(bottom: new BorderSide())),
     );
   }
 
@@ -198,11 +185,7 @@ class _WeiboPageState extends State<WeiboPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: RefreshIndicator(
-        // enablePullDown: true,
-        // header: WaterDropHeader(),
-        // controller: _refreshController,
         onRefresh: _refreshLocalGallery,
-        // child: getListView(),
         child: ScrollablePositionedList.builder(
           itemCount: widgets.length,
           itemBuilder: (context, index) {
@@ -225,8 +208,11 @@ class StatusCell extends StatelessWidget {
   Widget build(BuildContext context) {
     List pic_urls = status["pic_urls"];
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(status["text"]),
+        RichTextView(
+          text: status["text"],
+        ),
         for (var dict in pic_urls) Image.network(dict["thumbnail_pic"]),
       ],
     );
@@ -240,6 +226,12 @@ class RetweetedStatusCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(status["retweeted_status"]["text"]);
+    return Container(
+      decoration: new BoxDecoration(color: Colors.grey[300]),
+      child: RichTextView(
+        text:
+            "${status["retweeted_status"]["user"]["name"]} > ${status["retweeted_status"]["text"]}",
+      ),
+    );
   }
 }

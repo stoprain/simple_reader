@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:simple_reader/comment.dart';
 import 'package:simple_reader/model.dart';
 import 'dart:convert';
 import 'package:intl/intl.dart';
+import 'package:simple_reader/scrollable_positioned_list/src/item_positions_listener.dart';
 
 import 'dart:async';
+
+import 'package:simple_reader/scrollable_positioned_list/src/scrollable_positioned_list.dart';
 
 class WeiboPage extends StatefulWidget {
   WeiboPage({Key key}) : super(key: key);
@@ -18,8 +20,8 @@ class _WeiboPageState extends State<WeiboPage> {
   List widgets = [];
   final dbHelper = DatabaseHelper.instance;
   final df = new DateFormat("EEE MMM dd HH:mm:ss yyyy");
-  RefreshController _refreshController =
-      RefreshController(initialRefresh: false);
+  // RefreshController _refreshController =
+  //     RefreshController(initialRefresh: false);
   Map<int, GlobalKey> _keys = {};
 
   void _onRefresh() async {
@@ -33,7 +35,7 @@ class _WeiboPageState extends State<WeiboPage> {
       List statuses = json.decode(response.body)["statuses"];
       reloadStatuses(statuses);
     }
-    _refreshController.refreshCompleted();
+    // _refreshController.refreshCompleted();
   }
 
   @override
@@ -43,6 +45,9 @@ class _WeiboPageState extends State<WeiboPage> {
   }
 
   var controller = new ScrollController();
+  final ItemScrollController itemScrollController = ItemScrollController();
+  final ItemPositionsListener itemPositionListener =
+      ItemPositionsListener.create();
 
   ListView getListView() => ListView.builder(
         itemCount: widgets.length,
@@ -53,17 +58,17 @@ class _WeiboPageState extends State<WeiboPage> {
       );
 
   Widget getRow(int i) {
-    print("getRow $i ${widgets[i]["idstr"]}");
-    _afterLayout(_) {
-      final RenderBox renderBoxRed = _keys[i].currentContext.findRenderObject();
-      final sizeRed = renderBoxRed.size;
-      print("SIZE of Red: $sizeRed");
-      if (increase != 0 && i <= increase) {
-        currentHeight += sizeRed.height;
-      }
-    }
+    // print("getRow $i ${widgets[i]["idstr"]}");
+    // _afterLayout(_) {
+    //   final RenderBox renderBoxRed = _keys[i].currentContext.findRenderObject();
+    //   final sizeRed = renderBoxRed.size;
+    //   print("SIZE of Red: $sizeRed");
+    //   if (increase != 0 && i <= increase) {
+    //     currentHeight += sizeRed.height;
+    //   }
+    // }
 
-    WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
+    // WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
     _keys[i] = new GlobalKey();
     return ListTile(
       key: _keys[i],
@@ -91,14 +96,7 @@ class _WeiboPageState extends State<WeiboPage> {
           StatusCell(widgets[i])
         ],
       ),
-      subtitle: new Column(
-        children: <Widget>[
-          // Text("retweeted")
-          (widgets[i]["retweeted_status"] != null)
-              ? RetweetedStatusCell(widgets[i])
-              : null
-        ],
-      ),
+      subtitle: null,
       onTap: () {
         Navigator.push(
           context,
@@ -159,7 +157,10 @@ class _WeiboPageState extends State<WeiboPage> {
       }
     });
     if (increase > 0) {
-      delayScroll();
+      // delayScroll();
+      itemScrollController.jumpTo(index: increase);
+      increase = 0;
+      currentHeight = 0;
     }
   }
 
@@ -180,15 +181,36 @@ class _WeiboPageState extends State<WeiboPage> {
     // });
   }
 
+  Future<Null> _refreshLocalGallery() async {
+    await Future.delayed(Duration(milliseconds: 1000));
+    if (mounted) {
+      String dataURL =
+          "https://api.weibo.com/2/statuses/home_timeline.json?count=100&access_token=" +
+              DatabaseHelper.accessToken;
+      http.Response response = await http.get(dataURL);
+      List statuses = json.decode(response.body)["statuses"];
+      reloadStatuses(statuses);
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SmartRefresher(
-        enablePullDown: true,
-        header: WaterDropHeader(),
-        controller: _refreshController,
-        onRefresh: _onRefresh,
-        child: getListView(),
+      body: RefreshIndicator(
+        // enablePullDown: true,
+        // header: WaterDropHeader(),
+        // controller: _refreshController,
+        onRefresh: _refreshLocalGallery,
+        // child: getListView(),
+        child: ScrollablePositionedList.builder(
+          itemCount: widgets.length,
+          itemBuilder: (context, index) {
+            return getRow(index);
+          },
+          itemScrollController: itemScrollController,
+          // itemPositionListener: itemPositionListener,
+        ),
       ),
     );
   }

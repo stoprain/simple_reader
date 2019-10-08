@@ -3,80 +3,134 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B4A2A1D92347748A008EAE63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A2A1D82347748A008EAE63 /* AppDelegate.swift */; };
-		B4A2A1DB2347748A008EAE63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A2A1DA2347748A008EAE63 /* SceneDelegate.swift */; };
-		B4A2A1DD2347748A008EAE63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A2A1DC2347748A008EAE63 /* ViewController.swift */; };
-		B4A2A1E02347748A008EAE63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4A2A1DE2347748A008EAE63 /* Main.storyboard */; };
-		B4A2A1E22347748B008EAE63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4A2A1E12347748B008EAE63 /* Assets.xcassets */; };
-		B4A2A1E52347748B008EAE63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4A2A1E32347748B008EAE63 /* LaunchScreen.storyboard */; };
+		000A1508D3C2CBD34F720F7E /* Pods_DailyReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69D6FB283E9030E7AE0140E1 /* Pods_DailyReader.framework */; };
+		B493D1FD2347893F00696458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493D1FC2347893F00696458 /* AppDelegate.swift */; };
+		B493D2012347893F00696458 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493D2002347893F00696458 /* ViewController.swift */; };
+		B493D2062347894000696458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B493D2052347894000696458 /* Assets.xcassets */; };
+		B493D2092347894000696458 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B493D2072347894000696458 /* LaunchScreen.storyboard */; };
+		B493D21223478B3600696458 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493D21023478B3600696458 /* Status.swift */; };
+		B493D21623478BBE00696458 /* home_timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = B493D21523478BBD00696458 /* home_timeline.json */; };
+		B493D218234826DC00696458 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493D217234826DC00696458 /* DBHelper.swift */; };
+		B493D230234985E000696458 /* StatusCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493D22F234985E000696458 /* StatusCellTableViewCell.swift */; };
+		B493D23F2349CFE800696458 /* show.json in Resources */ = {isa = PBXBuildFile; fileRef = B493D23D2349CFE800696458 /* show.json */; };
+		B493D2402349CFE800696458 /* favorites.json in Resources */ = {isa = PBXBuildFile; fileRef = B493D23E2349CFE800696458 /* favorites.json */; };
+		B493D2422349D41000696458 /* CommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493D2412349D41000696458 /* CommentsTableViewController.swift */; };
+		B493D244234A349600696458 /* AttitudesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493D243234A349600696458 /* AttitudesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B4A2A1D52347748A008EAE63 /* DailyReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B4A2A1D82347748A008EAE63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B4A2A1DA2347748A008EAE63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B4A2A1DC2347748A008EAE63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B4A2A1DF2347748A008EAE63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B4A2A1E12347748B008EAE63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B4A2A1E42347748B008EAE63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B4A2A1E62347748B008EAE63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69D6FB283E9030E7AE0140E1 /* Pods_DailyReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4AFE769EC67C2F03F71BC8D /* Pods-DailyReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyReader.debug.xcconfig"; path = "Target Support Files/Pods-DailyReader/Pods-DailyReader.debug.xcconfig"; sourceTree = "<group>"; };
+		B493D1F92347893F00696458 /* DailyReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B493D1FC2347893F00696458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B493D2002347893F00696458 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B493D2052347894000696458 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B493D2082347894000696458 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B493D20A2347894000696458 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B493D21023478B3600696458 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		B493D21523478BBD00696458 /* home_timeline.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home_timeline.json; sourceTree = "<group>"; };
+		B493D217234826DC00696458 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		B493D21A2348A4F500696458 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		B493D22F234985E000696458 /* StatusCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellTableViewCell.swift; sourceTree = "<group>"; };
+		B493D23D2349CFE800696458 /* show.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = show.json; sourceTree = "<group>"; };
+		B493D23E2349CFE800696458 /* favorites.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = favorites.json; sourceTree = "<group>"; };
+		B493D2412349D41000696458 /* CommentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewController.swift; sourceTree = "<group>"; };
+		B493D243234A349600696458 /* AttitudesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttitudesTableViewController.swift; sourceTree = "<group>"; };
+		E548471368DF3AB6C08B4BC5 /* Pods-DailyReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyReader.release.xcconfig"; path = "Target Support Files/Pods-DailyReader/Pods-DailyReader.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B4A2A1D22347748A008EAE63 /* Frameworks */ = {
+		B493D1F62347893F00696458 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000A1508D3C2CBD34F720F7E /* Pods_DailyReader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B4A2A1CC2347748A008EAE63 = {
+		8240A1DF736800D0F78EC644 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B4A2A1D72347748A008EAE63 /* DailyReader */,
-				B4A2A1D62347748A008EAE63 /* Products */,
+				A4AFE769EC67C2F03F71BC8D /* Pods-DailyReader.debug.xcconfig */,
+				E548471368DF3AB6C08B4BC5 /* Pods-DailyReader.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9AC85236DDD3173DF7567AEF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				69D6FB283E9030E7AE0140E1 /* Pods_DailyReader.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B493D1F02347893F00696458 = {
+			isa = PBXGroup;
+			children = (
+				B493D1FB2347893F00696458 /* DailyReader */,
+				B493D1FA2347893F00696458 /* Products */,
+				8240A1DF736800D0F78EC644 /* Pods */,
+				9AC85236DDD3173DF7567AEF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		B4A2A1D62347748A008EAE63 /* Products */ = {
+		B493D1FA2347893F00696458 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B4A2A1D52347748A008EAE63 /* DailyReader.app */,
+				B493D1F92347893F00696458 /* DailyReader.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B4A2A1D72347748A008EAE63 /* DailyReader */ = {
+		B493D1FB2347893F00696458 /* DailyReader */ = {
 			isa = PBXGroup;
 			children = (
-				B4A2A1D82347748A008EAE63 /* AppDelegate.swift */,
-				B4A2A1DA2347748A008EAE63 /* SceneDelegate.swift */,
-				B4A2A1DC2347748A008EAE63 /* ViewController.swift */,
-				B4A2A1DE2347748A008EAE63 /* Main.storyboard */,
-				B4A2A1E12347748B008EAE63 /* Assets.xcassets */,
-				B4A2A1E32347748B008EAE63 /* LaunchScreen.storyboard */,
-				B4A2A1E62347748B008EAE63 /* Info.plist */,
+				B493D21A2348A4F500696458 /* MyPlayground.playground */,
+				B493D21423478BBD00696458 /* Resources */,
+				B493D21023478B3600696458 /* Status.swift */,
+				B493D1FC2347893F00696458 /* AppDelegate.swift */,
+				B493D2002347893F00696458 /* ViewController.swift */,
+				B493D2052347894000696458 /* Assets.xcassets */,
+				B493D2072347894000696458 /* LaunchScreen.storyboard */,
+				B493D20A2347894000696458 /* Info.plist */,
+				B493D217234826DC00696458 /* DBHelper.swift */,
+				B493D22F234985E000696458 /* StatusCellTableViewCell.swift */,
+				B493D2412349D41000696458 /* CommentsTableViewController.swift */,
+				B493D243234A349600696458 /* AttitudesTableViewController.swift */,
 			);
 			path = DailyReader;
+			sourceTree = "<group>";
+		};
+		B493D21423478BBD00696458 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B493D23E2349CFE800696458 /* favorites.json */,
+				B493D23D2349CFE800696458 /* show.json */,
+				B493D21523478BBD00696458 /* home_timeline.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B4A2A1D42347748A008EAE63 /* DailyReader */ = {
+		B493D1F82347893F00696458 /* DailyReader */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B4A2A1E92347748B008EAE63 /* Build configuration list for PBXNativeTarget "DailyReader" */;
+			buildConfigurationList = B493D20D2347894000696458 /* Build configuration list for PBXNativeTarget "DailyReader" */;
 			buildPhases = (
-				B4A2A1D12347748A008EAE63 /* Sources */,
-				B4A2A1D22347748A008EAE63 /* Frameworks */,
-				B4A2A1D32347748A008EAE63 /* Resources */,
+				A1CBC1A069776A3A6B183A90 /* [CP] Check Pods Manifest.lock */,
+				B493D1F52347893F00696458 /* Sources */,
+				B493D1F62347893F00696458 /* Frameworks */,
+				B493D1F72347893F00696458 /* Resources */,
+				9940B286502C56B64E278435 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -84,25 +138,25 @@
 			);
 			name = DailyReader;
 			productName = DailyReader;
-			productReference = B4A2A1D52347748A008EAE63 /* DailyReader.app */;
+			productReference = B493D1F92347893F00696458 /* DailyReader.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B4A2A1CD2347748A008EAE63 /* Project object */ = {
+		B493D1F12347893F00696458 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
-				ORGANIZATIONNAME = stoprain;
 				TargetAttributes = {
-					B4A2A1D42347748A008EAE63 = {
+					B493D1F82347893F00696458 = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
 					};
 				};
 			};
-			buildConfigurationList = B4A2A1D02347748A008EAE63 /* Build configuration list for PBXProject "DailyReader" */;
+			buildConfigurationList = B493D1F42347893F00696458 /* Build configuration list for PBXProject "DailyReader" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,55 +164,95 @@
 				en,
 				Base,
 			);
-			mainGroup = B4A2A1CC2347748A008EAE63;
-			productRefGroup = B4A2A1D62347748A008EAE63 /* Products */;
+			mainGroup = B493D1F02347893F00696458;
+			productRefGroup = B493D1FA2347893F00696458 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B4A2A1D42347748A008EAE63 /* DailyReader */,
+				B493D1F82347893F00696458 /* DailyReader */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B4A2A1D32347748A008EAE63 /* Resources */ = {
+		B493D1F72347893F00696458 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4A2A1E52347748B008EAE63 /* LaunchScreen.storyboard in Resources */,
-				B4A2A1E22347748B008EAE63 /* Assets.xcassets in Resources */,
-				B4A2A1E02347748A008EAE63 /* Main.storyboard in Resources */,
+				B493D2092347894000696458 /* LaunchScreen.storyboard in Resources */,
+				B493D21623478BBE00696458 /* home_timeline.json in Resources */,
+				B493D23F2349CFE800696458 /* show.json in Resources */,
+				B493D2062347894000696458 /* Assets.xcassets in Resources */,
+				B493D2402349CFE800696458 /* favorites.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9940B286502C56B64E278435 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyReader/Pods-DailyReader-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyReader/Pods-DailyReader-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DailyReader/Pods-DailyReader-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A1CBC1A069776A3A6B183A90 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DailyReader-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		B4A2A1D12347748A008EAE63 /* Sources */ = {
+		B493D1F52347893F00696458 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4A2A1DD2347748A008EAE63 /* ViewController.swift in Sources */,
-				B4A2A1D92347748A008EAE63 /* AppDelegate.swift in Sources */,
-				B4A2A1DB2347748A008EAE63 /* SceneDelegate.swift in Sources */,
+				B493D230234985E000696458 /* StatusCellTableViewCell.swift in Sources */,
+				B493D2012347893F00696458 /* ViewController.swift in Sources */,
+				B493D1FD2347893F00696458 /* AppDelegate.swift in Sources */,
+				B493D21223478B3600696458 /* Status.swift in Sources */,
+				B493D244234A349600696458 /* AttitudesTableViewController.swift in Sources */,
+				B493D218234826DC00696458 /* DBHelper.swift in Sources */,
+				B493D2422349D41000696458 /* CommentsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B4A2A1DE2347748A008EAE63 /* Main.storyboard */ = {
+		B493D2072347894000696458 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B4A2A1DF2347748A008EAE63 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B4A2A1E32347748B008EAE63 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B4A2A1E42347748B008EAE63 /* Base */,
+				B493D2082347894000696458 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -166,7 +260,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		B4A2A1E72347748B008EAE63 /* Debug */ = {
+		B493D20B2347894000696458 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -226,7 +320,7 @@
 			};
 			name = Debug;
 		};
-		B4A2A1E82347748B008EAE63 /* Release */ = {
+		B493D20C2347894000696458 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -280,10 +374,12 @@
 			};
 			name = Release;
 		};
-		B4A2A1EA2347748B008EAE63 /* Debug */ = {
+		B493D20E2347894000696458 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4AFE769EC67C2F03F71BC8D /* Pods-DailyReader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E8MXEZ8C96;
 				INFOPLIST_FILE = DailyReader/Info.plist;
@@ -293,15 +389,19 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.stoprain.DailyReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		B4A2A1EB2347748B008EAE63 /* Release */ = {
+		B493D20F2347894000696458 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E548471368DF3AB6C08B4BC5 /* Pods-DailyReader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E8MXEZ8C96;
 				INFOPLIST_FILE = DailyReader/Info.plist;
@@ -311,33 +411,34 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.stoprain.DailyReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B4A2A1D02347748A008EAE63 /* Build configuration list for PBXProject "DailyReader" */ = {
+		B493D1F42347893F00696458 /* Build configuration list for PBXProject "DailyReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B4A2A1E72347748B008EAE63 /* Debug */,
-				B4A2A1E82347748B008EAE63 /* Release */,
+				B493D20B2347894000696458 /* Debug */,
+				B493D20C2347894000696458 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B4A2A1E92347748B008EAE63 /* Build configuration list for PBXNativeTarget "DailyReader" */ = {
+		B493D20D2347894000696458 /* Build configuration list for PBXNativeTarget "DailyReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B4A2A1EA2347748B008EAE63 /* Debug */,
-				B4A2A1EB2347748B008EAE63 /* Release */,
+				B493D20E2347894000696458 /* Debug */,
+				B493D20F2347894000696458 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = B4A2A1CD2347748A008EAE63 /* Project object */;
+	rootObject = B493D1F12347893F00696458 /* Project object */;
 }
